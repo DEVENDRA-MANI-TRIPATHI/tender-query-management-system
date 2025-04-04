@@ -24,8 +24,9 @@ const App = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-900 min-h-screen flex justify-center px-4 pt-10">
-      <div className="w-full max-w-3xl flex flex-col items-center gap-6">
+    <div className="p-4 bg-gray-900 min-h-screen flex flex-col items-center pt-1">
+      <h1 className="text-2xl text-center font-semibold text-blue-400 ">Document Query management System</h1>
+      <div className="w-full max-w-3xl flex flex-col items-center gap-6 pt-3">
         <PdfUploader onTextExtracted={setPdfText} />
         <ChatBox onSend={handleSendQuestion} />
       </div> 

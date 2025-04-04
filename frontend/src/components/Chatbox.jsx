@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ChatBox = ({ onSend }) => {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
+  const [isTyping, setisTyping] = useState(false);
+  const bottomRef = useRef(null)
+  
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  },[messages])
 
   const handleSend = async () => {
     if (!question.trim()) return;
@@ -12,7 +18,21 @@ const ChatBox = ({ onSend }) => {
 
     const answer = await onSend(question);
     if (answer) {
-      setMessages((prev) => [...prev, { type: "answer", text: answer }]);
+      setisTyping(true)
+      setMessages((prev) => [...prev, { type: "answer", text: "" }]);
+      let displayText = "";
+      const typingSpeed = 20;
+
+      for (let i = 0; i < answer.length; i++) {
+        displayText += answer[i];
+        await new Promise((resolve) => setTimeout(resolve, typingSpeed));
+        setMessages((prev) => [
+          ...prev.slice(0, -1),
+          { type: "answer", text: displayText },
+        ]);
+      
+      }
+      setisTyping(false);
     }
   };
 
@@ -31,6 +51,11 @@ const ChatBox = ({ onSend }) => {
             <p className="text-sm text-gray-300 whitespace-pre-wrap">{msg.text}</p>
           </div>
         ))}
+        {isTyping && (
+          <div className="p-3 rounded-lg inline-block bg-gray-700 text-left mr-auto max-w-[75%] animate-pulse">
+            <p className="text-sm text-gray-300">Typing...</p>
+          </div>)}
+        <div ref={bottomRef}/>
       </div>
       <div className="p-3 border-t flex gap-2 bg-gray-800 text-gray-500">
         <input
