@@ -6,9 +6,10 @@ const ChatBox = ({ onSend }) => {
 
   const handleSend = async () => {
     if (!question.trim()) return;
-    const newMessages = [...messages, { type: "question", text: question }];
-    setMessages(newMessages);
+
+    setMessages((prev) => [...prev, { type: "question", text: question }]);
     setQuestion("");
+
     const answer = await onSend(question);
     if (answer) {
       setMessages((prev) => [...prev, { type: "answer", text: answer }]);
@@ -24,7 +25,7 @@ const ChatBox = ({ onSend }) => {
             className={`p-3 rounded-lg inline-block max-w-[75%] break-words ${
               msg.type === "question"
                 ? "ml-auto bg-gray-700 text-right"
-                : "mr-auto bg-gray-700"
+                : "mr-auto bg-gray-700 text-left"
             }`}
           >
             <p className="text-sm text-gray-300 whitespace-pre-wrap">{msg.text}</p>
