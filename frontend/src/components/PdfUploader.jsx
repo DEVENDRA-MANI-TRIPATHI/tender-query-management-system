@@ -12,7 +12,7 @@ const PdfUploader = ({ onTextExtracted }) => {
 
     if (file) {
       setFileName(file.name);
-      extractTextFromPDF(file, onTextExtracted);
+      extractTextFromPDF(file,(text)=> onTextExtracted(text,file));
     } else {
       setFileName("");
       onTextExtracted("");
