@@ -43,7 +43,7 @@ const App = () => {
           <PdfUploader onTextExtracted={handleTextExtracted} />
           <ChatBox onSend={handleSendQuestion} />
         </div>
-        <div className="hidden md:block w-full">
+        <div className="hidden md:block w-full md:w-1/2">
           <PdfPreview pdfURL={pdfURL} />
         </div>
       </div>
