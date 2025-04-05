@@ -3,7 +3,7 @@ import React from 'react';
 const PdfPreview = ({ pdfURL }) => {
   if (!pdfURL) return (
     <div className="h-full flex items-center justify-center text-gray-400">
-      No PDF selected for preview.
+      No PDF selected for preview. Please upload a document in PDF format so I can assist you.
     </div>
   );
 

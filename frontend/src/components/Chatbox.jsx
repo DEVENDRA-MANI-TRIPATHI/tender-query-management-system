@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from 'react-markdown';
 
 
-const ChatBox = ({ onSend }) => {
+const ChatBox = ({ onSend,disabled }) => {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState([]);
   const [isTyping, setisTyping] = useState(false);
@@ -120,9 +120,11 @@ const ChatBox = ({ onSend }) => {
           className="flex-grow p-2 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray"
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
+          disabled={disabled}
         />
         <button
           onClick={handleSend}
+          disabled={disabled}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
         >
           Send
