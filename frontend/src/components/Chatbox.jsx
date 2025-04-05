@@ -37,24 +37,25 @@ const ChatBox = ({ onSend }) => {
   };
 
   return (
-    <div className="w-full mt-4 flex flex-col h-[500px] border rounded-lg shadow-sm">
-      <div className="flex-grow rounded-lg overflow-y-auto p-4 space-y-4 bg-gray-800 flex flex-col">
+    <div className="w-full mt-4 flex flex-col h-[500px] max-h-[70vh] border border-gray-700 rounded-lg overflow-hidden shadow-sm">
+      <div className="flex-grow rounded-lg overflow-y-auto p-4 space-y-4 bg-gray-800 flex flex-col thin-scrollbar">
         {messages.map((msg, idx) => (
           <div
             key={idx}
             className={`p-3 rounded-lg inline-block max-w-[75%] break-words ${
               msg.type === "question"
-                ? "ml-auto bg-gray-700 text-right"
+                ? "ml-auto bg-blue-700 text-right"
                 : "mr-auto bg-gray-700 text-left"
             }`}
           >
-            <p className="text-sm text-gray-300 whitespace-pre-wrap">{msg.text}</p>
+            <p className="text-base text-gray-200 leading-relaxed font-medium whitespace-pre-wrap">{msg.text}</p>
           </div>
         ))}
         {isTyping && (
-          <div className="p-3 rounded-lg inline-block bg-gray-700 text-left mr-auto max-w-[75%] animate-pulse">
-            <p className="text-sm text-gray-300">Typing...</p>
-          </div>)}
+          <div className="p-3 rounded-lg inline-block bg-blue-600/30 text-left mr-auto max-w-[75%] animate-pulse">
+            <p className="text-sm text-blue-300 italic tracking-wide">Typing...</p>
+          </div>
+        )}
         <div ref={bottomRef}/>
       </div>
       <div className="p-3 border-t flex gap-2 bg-gray-800 text-gray-500">

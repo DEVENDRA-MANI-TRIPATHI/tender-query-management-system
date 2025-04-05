@@ -50,8 +50,8 @@ const PdfUploader = ({ onTextExtracted }) => {
   };
 
   return (
-    <div className="flex items-center gap-3 p-3 bg-gray-100 border border-gray-300 rounded-lg">
-      <label className="cursor-pointer text-blue-600 font-medium">
+    <div className="flex items-center gap-3 p-3 bg-gray-800 border border-gray-700 rounded-lg">
+      <label className="cursor-pointer text-white bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-200 font-medium shadow-md">
         Upload PDF
         <input
           type="file"
@@ -61,7 +61,7 @@ const PdfUploader = ({ onTextExtracted }) => {
         />
       </label>
       {fileName && (
-        <span className="text-sm text-gray-600 truncate max-w-xs">{fileName}</span>
+        <span className="text-sm text-gray-300 truncate max-w-xs">{fileName}</span>
       )}
     </div>
   );

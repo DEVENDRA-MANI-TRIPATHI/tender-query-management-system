@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+
+/* Add this CSS */
+.thin-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #4b5563; /* Tailwind's gray-700 */
+    border-radius: 8px;
+  }
+  
